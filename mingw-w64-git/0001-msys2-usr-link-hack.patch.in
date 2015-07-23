@@ -1,0 +1,32 @@
+diff --git a/exec_cmd.c b/exec_cmd.c
+index e85f0fd..a7dce3b 100644
+--- a/exec_cmd.c
++++ b/exec_cmd.c
+@@ -15,8 +15,10 @@ char *system_path(const char *path)
+ #endif
+ 	struct strbuf d = STRBUF_INIT;
+ 
++#ifndef __MINGW32__
+ 	if (is_absolute_path(path))
+ 		return xstrdup(path);
++#endif
+ 
+ #ifdef RUNTIME_PREFIX
+ 	assert(argv0_path);
+@@ -31,5 +33,12 @@ char *system_path(const char *path)
+ 				"but prefix computation failed.  "
+ 				"Using static fallback '%s'.\n", prefix);
+ 	}
++#ifdef __MINGW32__
++	char *slash = strrchr(prefix, '\\');
++	if (slash && !strcmp(slash, "\\usr")) {
++	    char *nprefix = strip_path_suffix(prefix, "usr");
++	    strbuf_addf(&d, "%s/@@PKGPREFIX@@/%s", nprefix, path);
++	} else
++#endif
+ #endif
+ 
+	strbuf_addf(&d, "%s/%s", prefix, path);
+ 	return strbuf_detach(&d, NULL);
+ }
+ 

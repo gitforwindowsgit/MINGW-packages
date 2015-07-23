@@ -10,7 +10,7 @@ test -z "SKIP_GIT_DOCS" ||
 pkgname="${pkgname[0]}"
 tag=2.4.6.windows.1
 pkgver=2.4.6.1.43f871f
-pkgrel=1
+pkgrel=2
 pkgdesc="The fast distributed version control system (mingw-w64)"
 arch=('any')
 url="http://git-for-windows.github.io/"
@@ -35,9 +35,11 @@ depends=("${MINGW_PACKAGE_PREFIX}-curl"
          "perl-Net-SMTP-SSL"
          "perl-TermReadKey")
 
-source=("${_realname}"::"git+https://github.com/git-for-windows/git.git#tag=v$tag")
+source=("${_realname}"::"git+https://github.com/git-for-windows/git.git#tag=v$tag"
+        '0001-msys2-usr-link-hack.patch.in')
 
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'SKIP')
 
 pkgver() {
   cd "$srcdir/git"
@@ -77,6 +79,12 @@ build() {
   # otherwise default to one job at a time
   # for example, PARALLEL_BUILD=-j8
   counter=0
+
+  local edpatch="$srcdir/0001-msys2-usr-link-hack.patch"
+  cp "$srcdir/0001-msys2-usr-link-hack.patch.in" "$edpatch"
+  sed "s%@@PKGPREFIX@@%${MINGW_PREFIX#/}%" -i "$edpatch"
+  patch -p1 -i "$edpatch"
+
   while ! if test -z "$SKIP_GIT_DOCS"
     then
       make "${PARALLEL_BUILD:--j1}" all
@@ -127,6 +135,8 @@ EOF
 }
 
 package_git () {
+  backup=("${MINGW_PREFIX#/}/etc/gitconfig")
+
   export PYTHON_PATH=/usr/bin/python2
   cd "$srcdir"/git
 
@@ -158,6 +168,13 @@ package_git () {
 
   # Install builtins.txt
   install -m644 builtins.txt $pkgdir$SHAREDIR
+
+  # Set path to CA cert bundle in system-wide gitconfig so https works
+  local etcdir="$pkgdir/$PREFIX/etc"
+  mkdir -p "$etcdir"
+  local config_cmd="$pkgdir/$PREFIX/libexec/git-core/git-config"
+  local certpath="$PREFIX/ssl/certs/ca-bundle.crt"
+  "$config_cmd" -f "$etcdir/gitconfig" http.sslCAInfo "$certpath"
 }
 
 package_git-doc-html () {
