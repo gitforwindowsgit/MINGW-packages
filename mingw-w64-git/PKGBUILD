@@ -10,7 +10,7 @@ test -z "SKIP_GIT_DOCS" ||
 pkgname="${pkgname[0]}"
 tag=2.4.6.windows.1
 pkgver=2.4.6.1.43f871f
-pkgrel=1
+pkgrel=2
 pkgdesc="The fast distributed version control system (mingw-w64)"
 arch=('any')
 url="http://git-for-windows.github.io/"
@@ -127,6 +127,8 @@ EOF
 }
 
 package_git () {
+  backup=("${MINGW_PREFIX#/}/etc/gitconfig")
+
   export PYTHON_PATH=/usr/bin/python2
   cd "$srcdir"/git
 
@@ -158,6 +160,13 @@ package_git () {
 
   # Install builtins.txt
   install -m644 builtins.txt $pkgdir$SHAREDIR
+
+  # Set path to CA cert bundle in system-wide gitconfig so https works
+  local etcdir="$pkgdir/$PREFIX/etc"
+  mkdir -p "$etcdir"
+  local config_cmd="$pkgdir/$PREFIX/libexec/git-core/git-config"
+  local certpath="$PREFIX/ssl/certs/ca-bundle.crt"
+  "$config_cmd" -f "$etcdir/gitconfig" http.sslCAInfo "$certpath"
 }
 
 package_git-doc-html () {
