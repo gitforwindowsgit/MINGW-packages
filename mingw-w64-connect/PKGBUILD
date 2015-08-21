@@ -1,0 +1,31 @@
+# Maintainer: 마누엘 <nalla@hamal.uberspace.de>
+
+_realname=connect
+pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
+pkgver=1.104
+tag='fd6f352325d4'
+pkgrel=1
+pkgdesc="SSH Proxy Command -- connect.c"
+arch=('any')
+url='https://bitbucket.org/gotoh/connect/wiki/Home'
+license=('GPL 2')
+source=("https://bitbucket.org/gotoh/connect/get/1.104.tar.gz")
+sha1sums=('bc10d4558ffae89d632cf4c46fb8b81b0c769492')
+makedepends=('gcc' 'tar')
+
+prepare() {
+  cd ${srcdir}/gotoh-connect-${tag}
+}
+
+build() {
+  [[ -d ${srcdir}/build-${MINGW_CHOST} ]] && rm -rf ${srcdir}/build-${MINGW_CHOST}
+  cp -rf gotoh-connect-${tag} build-${MINGW_CHOST}
+  cd ${srcdir}/build-${MINGW_CHOST}
+
+  gcc connect.c -o connect -lwsock32 -liphlpapi
+}
+
+package() {
+  cd ${srcdir}/build-${MINGW_CHOST}
+  install -Dm644 connect.exe ${pkgdir}${MINGW_PREFIX}/bin/connect.exe
+}
