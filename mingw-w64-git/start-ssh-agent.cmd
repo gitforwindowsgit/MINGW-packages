@@ -90,7 +90,8 @@
     @IF EXIST "%HOME%\.ssh\%1" @(
         @SET KEYS='%HOME%\.ssh\%1' %KEYS%
     ) ELSE (
-        @echo Key '%1' not found.
+        @REM Assume full path...
+        @SET KEYS='%1' %KEYS%
     )
 )
 @GOTO :EOF
