@@ -16,7 +16,7 @@ license=('GPL2')
 
 options=('!strip')
 makedepends=('python2' 'less' 'openssh' 'patch' 'make' 'tar' 'diffutils'
-	'ca-certificates' 'asciidoc' 'xmlto'
+	'ca-certificates' 'asciidoc' 'getopt' 'xmlto'
 	"${MINGW_PACKAGE_PREFIX}-asciidoctor-extensions")
 
 depends=("${MINGW_PACKAGE_PREFIX}-curl"
