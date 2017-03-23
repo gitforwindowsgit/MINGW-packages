@@ -70,9 +70,31 @@
             @ECHO. done
         )
         @"!SSH_ADD!"
+        @IF [!SSH_ADD_ADDITIONAL_KEYFILES!] NEQ [] @(
+            @SET KEYS=
+            @FOR %%I IN (!SSH_ADD_ADDITIONAL_KEYFILES!) DO @CALL :CHECKKEY %%I
+            IF NOT [!KEYS!] == [] @"!SSH_ADD!" !KEYS!
+        )
         @ECHO.
     )
 )
+
+@GOTO :ssh-agent-done
+
+
+@REM Functions
+@REM Check if ssh key has to be added
+:CHECKKEY
+@ssh-add -l | @FINDSTR /c:"%1" > NUL
+@IF ERRORLEVEL 1 @(
+    @IF EXIST "%HOME%\.ssh\%1" @(
+        @SET KEYS='%HOME%\.ssh\%1' %KEYS%
+    ) ELSE (
+        @REM Assume full path...
+        @SET KEYS='%1' %KEYS%
+    )
+)
+@GOTO :EOF
 
 :ssh-agent-done
 :failure
