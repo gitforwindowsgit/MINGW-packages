@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}" "${MINGW_PACKAGE_PREFIX}-${_realname}-debug")
 pkgver=2.8
 pkgrel=3
+epoch=1
 arch=('any')
 license=('LGPL')
 url="http://osgearth.org"

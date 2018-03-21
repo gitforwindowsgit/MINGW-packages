@@ -6,6 +6,7 @@ pkgbase=mingw-w64-${_fullname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_fullname}"
 pkgver=6.0.0
 pkgrel=1
+epoch=1
 pkgdesc="A regular expressions library (mingw-w64)"
 arch=('any')
 license=('BSD')

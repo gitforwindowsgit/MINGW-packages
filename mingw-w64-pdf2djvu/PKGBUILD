@@ -4,6 +4,7 @@ _realname=pdf2djvu
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=0.9.8
 pkgrel=1
+epoch=1
 pkgdesc="Creates DjVu files from PDF files"
 arch=('any')
 url="http://jwilk.net/software/pdf2djvu"

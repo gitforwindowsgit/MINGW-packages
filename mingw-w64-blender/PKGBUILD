@@ -19,6 +19,7 @@ _minorchar=
   pkgver=${_basever}.${_minorchar}
 }
 pkgrel=3
+epoch=1
 pkgdesc="A fully integrated 3D graphics creation suite (mingw-w64)"
 arch=('any')
 license=('GPL')

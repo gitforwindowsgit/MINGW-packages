@@ -8,6 +8,7 @@ __pre=
 _base_ver=4.5.0
 pkgver=${_base_ver}${_pre}
 pkgrel=1
+epoch=1
 pkgdesc='Cross-platform IDE (mingw-w64)'
 url='https://www.qt.io/'
 install=qt-creator-${CARCH}.install

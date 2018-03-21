@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=6.07.05
 pkgrel=1
+epoch=1
 arch=('any')
 pkgdesc="create scientific 2-dimensional graphs (mingw-w64)"
 depends=("${MINGW_PACKAGE_PREFIX}-adwaita-icon-theme"

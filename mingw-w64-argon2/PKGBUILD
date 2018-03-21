@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=20171227
 pkgrel=1
+epoch=1
 pkgdesc="This is the reference implementation of Argon2, the password-hashing function that won the Password Hashing Competition (PHC) (mingw-w64)"
 arch=('any')
 license=('CC0 and Apache 2.0')

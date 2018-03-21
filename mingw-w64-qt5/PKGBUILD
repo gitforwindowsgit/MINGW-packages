@@ -101,6 +101,7 @@ fi
 
 pkgver=${_ver_base//-/}
 pkgrel=1
+epoch=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (mingw-w64${_namesuff})"
 url='https://www.qt.io/'

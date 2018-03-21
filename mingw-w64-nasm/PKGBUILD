@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=2.13.02
 pkgrel=1
+epoch=1
 pkgdesc="An 80x86 assembler designed for portability and modularity (mingw-w64)"
 arch=('any')
 license=('BSD')

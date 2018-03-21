@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 pkgver=2.6.3
 pkgrel=1
+epoch=1
 pkgdesc="LibreSSL Encryption (mingw-w64)"
 arch=('any')
 url='https://www.libressl.org/'

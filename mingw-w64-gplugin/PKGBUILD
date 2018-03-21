@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=0.0.21
 pkgrel=3
+epoch=1
 arch=('any')
 pkgdesc="A GObject based library that implements a reusable plugin system (mingw-w64)"
 license=("LGPL 2")

@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}-git
 pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}-git" "${MINGW_PACKAGE_PREFIX}-${_realname}-debug-git")
 pkgver=r14215.2e6f0d7
 pkgrel=1
+epoch=1
 pkgdesc="Open source high performance 3D graphics toolkit (mingw-w64)"
 arch=('any')
 url="http://www.openscenegraph.org/"

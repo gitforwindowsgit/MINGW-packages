@@ -5,6 +5,7 @@ pkgbase="mingw-w64-${_realname}"
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=2.6.0
 pkgrel=1
+epoch=1
 arch=('any')
 url='https://tls.mbed.org/'
 pkgdesc='mbed TLS is an open source and commercial SSL library licensed by ARM Limited. (mingw-w64)'
