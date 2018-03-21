@@ -6,6 +6,7 @@ pkgbase="mingw-w64-${_realname}"
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=2.1.3
 pkgrel=1
+epoch=1
 arch=('any')
 url='https://github.com/cginternals/glbinding'
 pkgdesc="A C++ binding for the OpenGL API, generated using the gl.xml specification (mingw-w64)"

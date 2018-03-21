@@ -6,6 +6,7 @@ pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}-git"
 replaces=("${MINGW_PACKAGE_PREFIX}-${_realname}-svn")
 pkgver=6.0.0.5100.739199f8
 pkgrel=1
+epoch=1
 pkgdesc='MinGW-w64 CRT for Windows'
 arch=('any')
 url='https://mingw-w64.sourceforge.io/'

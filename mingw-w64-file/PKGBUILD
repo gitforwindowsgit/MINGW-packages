@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 pkgver=5.25
 pkgrel=1
+epoch=1
 pkgdesc='Determine the type of a file from its contents (mingw-w64)'
 arch=('any')
 url='https://www.darwinsys.com/file/'

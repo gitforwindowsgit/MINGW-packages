@@ -5,6 +5,7 @@ pkgbase="mingw-w64-${_realname}"
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=2.4.0
 pkgrel=1
+epoch=1
 arch=('any')
 url='https://botan.randombit.net/'
 pkgdesc='Botan is a C++ cryptography library released under the permissive Simplified BSD license (mingw-w64)'

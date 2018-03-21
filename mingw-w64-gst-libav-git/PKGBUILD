@@ -8,6 +8,7 @@ provides=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 conflicts=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 pkgver=r2034.ac4a47b
 pkgrel=1
+epoch=1
 pkgdesc="GStreamer libav (mingw-w64)"
 arch=('any')
 url="https://gstreamer.freedesktop.org/"

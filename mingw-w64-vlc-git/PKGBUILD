@@ -13,6 +13,7 @@ conflicts=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 _ver_base=2.2
 pkgver=3.0.0.73908.631233b58a
 pkgrel=1
+epoch=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player"
 arch=('any')
 url="https://www.videolan.org/vlc/"

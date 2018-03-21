@@ -7,6 +7,7 @@ replaces=("${MINGW_PACKAGE_PREFIX}-${_realname}-svn")
 pkgdesc="MinGW-w64 headers for Windows"
 pkgver=6.0.0.5102.2f16a8c7
 pkgrel=1
+epoch=1
 arch=('any')
 url="https://mingw-w64.sourceforge.io/"
 license=('custom')

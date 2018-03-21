@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname=${MINGW_PACKAGE_PREFIX}-${_realname}
 pkgver=4.0.3
 pkgrel=1
+epoch=1
 pkgdesc="An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar (mingw-w64)"
 arch=('any')
 url="https://qbittorrent.org/"

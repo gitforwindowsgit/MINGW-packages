@@ -5,6 +5,7 @@ pkgbase=mingw-w64-python-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-python2-${_realname}" "${MINGW_PACKAGE_PREFIX}-python3-${_realname}")
 pkgver=3.3.1
 pkgrel=1
+epoch=1
 pkgdesc='simple powerful testing with Python (mingw-w64)'
 url='https://pytest.org/'
 license=('MIT')

@@ -4,6 +4,7 @@ _realname=qpdf
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=7.1.0
 pkgrel=1
+epoch=1
 pkgdesc="QPDF is a program that does structural, content-preserving transformations on PDF files (mingw-w64)"
 arch=('any')
 url="http://qpdf.sourceforge.net/"

@@ -24,6 +24,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=1.10.0
 pkgrel=1
+epoch=1
 _pkgfqn="${_realname}-src-${pkgver}"
 pkgdesc="Qt Build Suite (mingw-w64)"
 url='https://www.qt.io/'

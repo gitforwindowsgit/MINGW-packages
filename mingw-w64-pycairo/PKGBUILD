@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-python2-cairo" "${MINGW_PACKAGE_PREFIX}-python3-cairo")
 pkgver=1.15.3
 pkgrel=1
+epoch=1
 pkgdesc="Python bindings for the cairo graphics library (mingw-w64)"
 url="https://pycairo.readthedocs.io"
 arch=('any')

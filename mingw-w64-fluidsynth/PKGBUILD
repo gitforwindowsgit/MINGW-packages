@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=1.1.8
 pkgrel=2
+epoch=1
 pkgdesc="A real-time software synthesizer based on the SoundFont 2 specifications (mingw-w64)"
 arch=('any')
 url="http://www.fluidsynth.org/"

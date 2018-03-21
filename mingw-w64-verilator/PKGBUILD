@@ -3,6 +3,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=3.914
 pkgrel=1
+epoch=1
 pkgdesc="The fastest free Verilog HDL simulator (mingw-w64)"
 arch=('any')
 url="https://www.veripool.org/projects/verilator/wiki/Intro"

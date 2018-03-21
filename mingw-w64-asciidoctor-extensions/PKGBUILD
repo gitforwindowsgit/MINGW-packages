@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=150.9846486
 pkgrel=1
+epoch=1
 pkgdesc="This package installs asciidoctor plus extensions."
 url="https://github.com/asciidoctor/asciidoctor"
 arch=('any')

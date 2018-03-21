@@ -6,6 +6,7 @@ pkgbase=mingw-w64-python-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-python2-${_realname}" "${MINGW_PACKAGE_PREFIX}-python3-${_realname}")
 pkgver=1.8.1
 pkgrel=2
+epoch=1
 pkgdesc="Caching and sessions WSGI middleware for use with web applications and stand-alone Python scripts and applications (mingw-w64)"
 arch=('any')
 license=('custom')

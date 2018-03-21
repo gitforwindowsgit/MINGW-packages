@@ -6,6 +6,7 @@ pkgbase=mingw-w64-openblas
 pkgname="${MINGW_PACKAGE_PREFIX}-openblas"
 pkgver=0.2.20
 pkgrel=1
+epoch=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD, providing optimized blas, lapack, and cblas (mingw-w64)"
 arch=('any')
 url="http://www.openblas.net/"

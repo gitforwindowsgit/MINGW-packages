@@ -5,6 +5,7 @@ pkgbase=mingw-w64-python-pillow
 pkgname=("${MINGW_PACKAGE_PREFIX}-python2-pillow" "${MINGW_PACKAGE_PREFIX}-python3-pillow")
 pkgver=4.3.0
 pkgrel=1
+epoch=1
 arch=('any')
 license=('custom')
 url="https://github.com/python-pillow/Pillow/"

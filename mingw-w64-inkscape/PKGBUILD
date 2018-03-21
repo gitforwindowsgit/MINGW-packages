@@ -13,6 +13,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
 pkgver=0.92.2
 pkgrel=1
+epoch=1
 pkgdesc="Vector graphics editor using the SVG file format (mingw-w64)"
 arch=('any')
 url="https://inkscape.sourceforge.io/"

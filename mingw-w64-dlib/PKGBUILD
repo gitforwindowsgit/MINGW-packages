@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 pkgver=19.7
 pkgrel=1
+epoch=1
 pkgdesc="A toolkit for making real world machine learning and data analysis applications in C++ (mingw-w64)"
 arch=('any')
 url='http://dlib.net/'

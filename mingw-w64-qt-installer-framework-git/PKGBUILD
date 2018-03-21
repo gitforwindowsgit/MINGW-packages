@@ -6,6 +6,7 @@ pkgname="${MINGW_PACKAGE_PREFIX}-qt-${_realname}-git"
 pkgdesc="The Qt Installer Framework used for the Qt SDK installer (mingw-w64)"
 pkgver=r2975.36059724
 pkgrel=1
+epoch=1
 arch=('any')
 url='https://www.qt.io/developers/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')

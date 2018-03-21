@@ -5,6 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}")
 pkgver=1.82
 pkgrel=1
+epoch=1
 pkgdesc="static analysis of C/C++ code (mingw-w64)"
 arch=('any')
 url="https://cppcheck.sourceforge.io/"
