@@ -663,8 +663,13 @@ int main(void)
 	LPWSTR working_directory = NULL;
 
 	/* Determine MSys2-based Git path. */
+	#ifdef _M_ARM64
+	swprintf(msystem_bin, sizeof(msystem_bin),
+		L"arm64\\bin");
+	#else
 	swprintf(msystem_bin, sizeof(msystem_bin),
 		L"mingw%d\\bin", (int) sizeof(void *) * 8);
+	#endif
 	*top_level_path = L'\0';
 
 	/* get the installation location */
