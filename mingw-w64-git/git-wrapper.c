@@ -120,8 +120,13 @@ static void setup_environment(LPWSTR top_level_path, int full_path)
 	int len;
 
 	/* Set MSYSTEM */
+	#ifdef _M_ARM64
+	swprintf(msystem, sizeof(msystem),
+		L"ARM64");
+	#else
 	swprintf(msystem, sizeof(msystem),
 		L"MINGW%d", (int) sizeof(void *) * 8);
+	#endif
 	SetEnvironmentVariable(L"MSYSTEM", msystem);
 
 	/* if not set, set PLINK_PROTOCOL to ssh */
