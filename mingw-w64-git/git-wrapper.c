@@ -169,13 +169,14 @@ static void setup_environment(LPWSTR top_level_path, int full_path)
 
 	/* extend the PATH */
 	len = GetEnvironmentVariable(L"PATH", NULL, 0);
-	len = sizeof(WCHAR) * (len + 3 * MAX_PATH);
+	len = sizeof(WCHAR) * (len + 4 * MAX_PATH);
 	path2 = (LPWSTR)malloc(len);
 	wcscpy(path2, top_level_path);
 	if (!full_path)
 		my_path_append(path2, L"cmd;", len);
 	else {
 		my_path_append(path2, msystem_bin, len);
+		my_path_append(path2, L".../mingw32/bin", len);
 		if (_waccess(path2, 0) != -1) {
 			/* We are in an MSys2-based setup */
 			int len2 = GetEnvironmentVariable(L"HOME", NULL, 0);
