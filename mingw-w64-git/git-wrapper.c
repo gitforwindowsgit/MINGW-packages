@@ -120,7 +120,7 @@ static void setup_environment(LPWSTR top_level_path, int full_path)
 	int len;
 
 	/* Set MSYSTEM */
-	#ifdef _M_ARM64
+	#if defined(_M_ARM64) || defined(__aarch64__)
 	swprintf(msystem, sizeof(msystem),
 		L"ARM64");
 	#else
@@ -664,7 +664,7 @@ int main(void)
 	LPWSTR working_directory = NULL;
 
 	/* Determine MSys2-based Git path. */
-	#ifdef _M_ARM64
+	#if defined(_M_ARM64) || defined(__aarch64__)
 	swprintf(msystem_bin, sizeof(msystem_bin),
 		L"arm64\\bin");
 	#else
