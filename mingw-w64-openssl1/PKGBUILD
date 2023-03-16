@@ -1,9 +1,9 @@
-# Maintainer: Alexey Pavlov <Alexpux@gmail.com>
+# Maintainer: Johannes Schindelin <johannes.schindelin@gmx.de>
 
 _realname=openssl
-pkgbase=mingw-w64-${_realname}
-pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}"
-	"${MINGW_PACKAGE_PREFIX}-${_realname}-pdb")
+pkgbase=mingw-w64-${_realname}1
+pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}1"
+	"${MINGW_PACKAGE_PREFIX}-${_realname}1-pdb")
 _ver=1.1.1t
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
@@ -179,26 +179,26 @@ _package() {
   rm -rf "${pkgdir}${MINGW_PREFIX}"/{ssl/misc,ssl/man}
 }
 
-package_mingw-w64-i686-openssl() {
+package_mingw-w64-i686-openssl1() {
   _package
 }
 
-package_mingw-w64-x86_64-openssl() {
+package_mingw-w64-x86_64-openssl1() {
   _package
 }
 
-package_mingw-w64-clang-aarch64-openssl() {
+package_mingw-w64-clang-aarch64-openssl1() {
   _package
 }
 
-package_mingw-w64-i686-openssl-pdb() {
+package_mingw-w64-i686-openssl1-pdb() {
   _package pdb
 }
 
-package_mingw-w64-x86_64-openssl-pdb() {
+package_mingw-w64-x86_64-openssl1-pdb() {
   _package pdb
 }
 
-package_mingw-w64-clang-aarch64-openssl-pdb() {
+package_mingw-w64-clang-aarch64-openssl1-pdb() {
   _package pdb
 }
