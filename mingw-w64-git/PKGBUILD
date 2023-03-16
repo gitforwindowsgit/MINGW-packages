@@ -9,7 +9,7 @@ pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}"
 	 "${MINGW_PACKAGE_PREFIX}-${_realname}-test-artifacts")
 tag=2.40.0.windows.1
 pkgver=2.40.0.1.1d90ca2906
-pkgrel=1
+pkgrel=2
 pkgdesc="The fast distributed version control system (mingw-w64)"
 arch=('any')
 url="https://git-for-windows.github.io/"
@@ -28,7 +28,6 @@ esac
 depends=("${MINGW_PACKAGE_PREFIX}-curl"
          "${MINGW_PACKAGE_PREFIX}-ca-certificates"
          "${MINGW_PACKAGE_PREFIX}-expat>=2.0"
-         "${MINGW_PACKAGE_PREFIX}-openssl"
          "$pcre"
          "${MINGW_PACKAGE_PREFIX}-tcl"
          "${MINGW_PACKAGE_PREFIX}-tk"
@@ -129,6 +128,8 @@ prepare () {
 
   cat >config.mak <<-EOF
 USE_ASCIIDOCTOR = $USE_ASCIIDOCTOR
+USE_CURL_FOR_IMAP_SEND = Absolamalutely
+NO_OPENSSL = Yes
 COMPAT_CFLAGS += $COMPAT_CFLAGS
 LDFLAGS = $LDFLAGS
 EOF
