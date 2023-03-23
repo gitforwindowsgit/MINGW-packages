@@ -3,6 +3,9 @@
 _realname=openssl
 pkgbase=mingw-w64-${_realname}1
 pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}1"
+        "${MINGW_PACKAGE_PREFIX}-${_realname}1-bin"
+        "${MINGW_PACKAGE_PREFIX}-${_realname}1-devel"
+        "${MINGW_PACKAGE_PREFIX}-${_realname}1-doc"
 	"${MINGW_PACKAGE_PREFIX}-${_realname}1-pdb")
 _ver=1.1.1t
 # use a pacman compatible version scheme
@@ -149,6 +152,9 @@ check() {
 }
 
 _package() {
+  test -z "$1" ||
+  depends+=("${MINGW_PACKAGE_PREFIX}-${_realname}1=$pkgver")
+
   cd "${srcdir}/build-${CARCH}"
 
   test pdb != "$1" || {
@@ -160,13 +166,34 @@ _package() {
     return
   }
 
+  test bin != "$1" || {
+    mkdir -p "${pkgdir}${MINGW_PREFIX}"/bin
+    make -j1 DESTDIR="${pkgdir}" install_programs
+    make -j1 DESTDIR="${pkgdir}" uninstall_runtime_libs
+    rm -rf "${pkgdir}${MINGW_PREFIX}"/bin/c_rehash
+    chmod -R 777 "${pkgdir}${MINGW_PREFIX}"/bin
+    return
+  }
+
+  test devel != "$1" || {
+    mkdir -p "${pkgdir}${MINGW_PREFIX}"/include/openssl
+    mkdir -p "${pkgdir}${MINGW_PREFIX}"/lib/pkgconfig
+    make -j1 DESTDIR="${pkgdir}" install_dev
+    make -j1 DESTDIR="${pkgdir}" uninstall_runtime_libs
+    install -m644 "${srcdir}/${_realname}-${_ver}/ms/applink.c" "${pkgdir}${MINGW_PREFIX}"/include/openssl/
+    return
+  }
+
+  test doc != "$1" || {
+    make -j1 DESTDIR="${pkgdir}" MANDIR="${MINGW_PREFIX}/share/man" MANSUFFIX=ssl install_docs
+    return
+  }
+
   mkdir -p "${pkgdir}${MINGW_PREFIX}"/bin
-  mkdir -p "${pkgdir}${MINGW_PREFIX}"/include/openssl
   mkdir -p "${pkgdir}${MINGW_PREFIX}"/lib/engines-1_1
-  mkdir -p "${pkgdir}${MINGW_PREFIX}"/lib/pkgconfig
   mkdir -p "${pkgdir}${MINGW_PREFIX}"/share/licenses/${_realname}
 
-  make -j1 DESTDIR="${pkgdir}" MANDIR="${MINGW_PREFIX}/share/man" MANSUFFIX=ssl install
+  make -j1 DESTDIR="${pkgdir}" install_engines install_runtime_libs install_ssldirs
   install -D -m644 "${srcdir}/${_realname}-${_ver}/LICENSE" \
          "${pkgdir}${MINGW_PREFIX}"/share/licenses/${_realname}/LICENSE
 
@@ -174,8 +201,6 @@ _package() {
   chmod -R 777 "${pkgdir}${MINGW_PREFIX}"/lib
   chmod -R 777 "${pkgdir}${MINGW_PREFIX}"/lib/engines-1_1
 
-  install -m644 "${srcdir}/${_realname}-${_ver}/ms/applink.c" "${pkgdir}${MINGW_PREFIX}"/include/openssl/
-  rm -rf "${pkgdir}${MINGW_PREFIX}"/bin/c_rehash
   rm -rf "${pkgdir}${MINGW_PREFIX}"/{ssl/misc,ssl/man}
 }
 
@@ -189,6 +214,42 @@ package_mingw-w64-x86_64-openssl1() {
 
 package_mingw-w64-clang-aarch64-openssl1() {
   _package
+}
+
+package_mingw-w64-i686-openssl1-bin() {
+  _package bin
+}
+
+package_mingw-w64-x86_64-openssl1-bin() {
+  _package bin
+}
+
+package_mingw-w64-clang-aarch64-openssl1-bin() {
+  _package bin
+}
+
+package_mingw-w64-i686-openssl1-devel() {
+  _package devel
+}
+
+package_mingw-w64-x86_64-openssl1-devel() {
+  _package devel
+}
+
+package_mingw-w64-clang-aarch64-openssl1-devel() {
+  _package devel
+}
+
+package_mingw-w64-i686-openssl1-doc() {
+  _package doc
+}
+
+package_mingw-w64-x86_64-openssl1-doc() {
+  _package doc
+}
+
+package_mingw-w64-clang-aarch64-openssl1-doc() {
+  _package doc
 }
 
 package_mingw-w64-i686-openssl1-pdb() {
