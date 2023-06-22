@@ -5,7 +5,7 @@ pkgbase=mingw-w64-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-${_realname}"
          "${MINGW_PACKAGE_PREFIX}-${_realname}-gnutls"
          "${MINGW_PACKAGE_PREFIX}-${_realname}-winssl")
-pkgver=8.1.2
+pkgver=8.1.2plus
 pkgrel=1
 pkgdesc="Command line tool and library for transferring data with URLs (mingw-w64)"
 arch=('any')
@@ -31,13 +31,12 @@ depends=("${MINGW_PACKAGE_PREFIX}-gcc-libs"
          "${MINGW_PACKAGE_PREFIX}-zlib"
          "${MINGW_PACKAGE_PREFIX}-zstd")
 options=('staticlibs')
-source=("https://github.com/curl/curl/releases/download/${_realname}-${pkgver//./_}/${_realname}-${pkgver}.tar.bz2"{,.asc}
+source=("${_realname}-${pkgver}"::"git+https://github.com/curl/curl#commit=65937f0d638f152d955e327d0fdaf14d7c98cb29"
         "pathtools.c"
         "pathtools.h"
         "0001-Make-cURL-relocatable.patch"
         "0002-Hack-make-relocation-work-inside-libexec-git-core-an.patch")
-sha256sums=('b54974d32fd610acace92e3df1f643144015ac65847f0a041fdc17db6f43f243'
-            'SKIP'
+sha256sums=('SKIP'
             '08209cbf1633fa92eae7e5d28f95f8df9d6184cc20fa878c99aec4709bb257fd'
             '965d3921ec4fdeec94a2718bc2c85ce5e1a00ea0e499330a554074a7ae15dfc6'
             '64cbbea0a6b273b2008a08479ea8736fb4917225d434f3c08da2560318393de0'
@@ -88,6 +87,8 @@ prepare() {
 
   cd "${srcdir}/${_realname}-${pkgver}"
   cp -fHv "${srcdir}"/pathtools.[ch] lib/
+
+  autoreconf -vfi
 
   apply_patch_with_msg \
     0001-Make-cURL-relocatable.patch \
