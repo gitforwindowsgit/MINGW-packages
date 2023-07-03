@@ -802,9 +802,16 @@ int main(void)
 		if (!wcsicmp(prefix_args + prefix_args_len - 4, L".exe"))
 			prefix_args_len -= 4;
 
+		initialize_top_level_path(top_level_path, exepath, msystem_bin, 1);
+
 		/* set the default exe module */
-		wcscpy(exe, exepath);
+		wcscpy(exe, top_level_path);
+		my_path_append(exe, msystem_bin, MAX_PATH);
 		my_path_append(exe, L"git.exe", MAX_PATH);
+		if (_waccess(exe, 0) == -1) {
+			wcscpy(exe, top_level_path);
+			my_path_append(exe, L"bin\\git.exe", MAX_PATH);
+		}
 	}
 	else if (!wcsicmp(basename, L"git.exe")) {
 		initialize_top_level_path(top_level_path, exepath, msystem_bin, 1);
