@@ -54,4 +54,7 @@ sed -e "s/pkgrel=[.0-9]\+\(.*\)/pkgrel=$new_pkgrel\1/" \
     -e '/^check()/,/^}/d' \
 	-i PKGBUILD
 
+git add *.patch PKGBUILD README-patches.md ||
+die 'Could not `git add` files'
+
 cleanup
